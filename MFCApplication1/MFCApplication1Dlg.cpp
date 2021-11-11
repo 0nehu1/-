@@ -105,23 +105,42 @@ BOOL CMFCApplication1Dlg::OnInitDialog()
 
 	
 	static CImageList ImgList,ImgListSmall;
-	ImgList.Create(48, 48, ILC_COLOR32, 6, 0);
-	ImgListSmall.Create(16, 16, ILC_COLOR32, 6, 0);
+	ImgList.Create(48, 48, ILC_COLOR32, 5, 0);
+	ImgListSmall.Create(16, 16, ILC_COLOR32, 5, 0);
 	CString str = _T("");
+	DWORD dwSeed = ::GetTickCount64();
+	LVITEM item;
+	::ZeroMemory(&item, sizeof(item));
+	item.mask = LVIF_TEXT | LVIF_IMAGE | LVIF_PARAM;
+
+	//이미지 리스트를 리스트 컨트롤에 설정함
+	m_List.SetImageList(&ImgList, LVSIL_NORMAL);
+	m_List.SetImageList(&ImgListSmall, LVSIL_SMALL);
+
+	m_List.InsertColumn(0, _T("Item"), LVCFMT_LEFT, 200);
+	m_List.InsertColumn(1, _T("Button"), LVCFMT_LEFT, 300);
+
+	m_List.ModifyStyle(LVS_TYPEMASK, LVS_REPORT);
+
 	for(int i = 0; i < 6; i++)
 	{
 		ImgList.Add(AfxGetApp()->LoadIconW(IDI_ICON1+i));
-		
+		ImgListSmall.Add(AfxGetApp()->LoadIconW(IDI_ICON1 + i));
+
 		str.Format(_T("%d Item"), i+1);
-		m_List.InsertItem(i, str, i);
+		item.pszText = str.GetBuffer();
+		item.iItem = i;
+		item.iImage = i;
+		item.lParam = dwSeed + i;
+		m_List.InsertItem(&item);
+
+		str.Format(_T("%d Button"), i + 1);
+		m_List.SetItemText(i, 1, str);
+		
 	}
 	
-	//이미지 리스트를 리스트 컨트롤에 설정함
-	m_List.SetImageList(&ImgList, LVSIL_NORMAL);
 
-	m_List.InsertColumn(0, _T("button"), LVCFMT_LEFT, 200);
-	m_List.InsertColumn(1, _T("Item"), LVCFMT_LEFT, 300);
-	m_List.ModifyStyle(LVS_TYPEMASK, LVS_REPORT);
+
 	return TRUE;  // 포커스를 컨트롤에 설정하지 않으면 TRUE를 반환합니다.
 }
 

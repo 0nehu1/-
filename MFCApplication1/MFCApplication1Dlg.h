@@ -33,4 +33,5 @@ protected:
 	DECLARE_MESSAGE_MAP()
 public:
 	CListCtrl m_List;
+	afx_msg void OnSize(UINT nType, int cx, int cy);
 };

@@ -66,6 +66,7 @@ BEGIN_MESSAGE_MAP(CMFCApplication1Dlg, CDialogEx)
 	ON_WM_SYSCOMMAND()
 	ON_WM_PAINT()
 	ON_WM_QUERYDRAGICON()
+	ON_WM_SIZE()
 END_MESSAGE_MAP()
 
 
@@ -136,10 +137,24 @@ BOOL CMFCApplication1Dlg::OnInitDialog()
 
 		str.Format(_T("%d Button"), i + 1);
 		m_List.SetItemText(i, 1, str);
-		
-	}
 	
 
+		Dim controlList As New List(Of MyControls)
+			Dim item1 As New MyControls
+			item1.theButton = New Button
+			item1.theTextBox = New TextBox
+			controlList.Add(item1)
+		//for (int i = 0; i < 10; i += 2)
+	//	{
+		//	for (int j = 2; j < 5; j += 2)
+		//	{
+		//		str.Format(_T("subitem\r\n%d,%d"), i, j);
+		//		this->m_List._SetItemControl(i, j, _CT_CButton, 0, strT);
+		//	}
+	//	}
+	}
+	
+	
 
 	return TRUE;  // 포커스를 컨트롤에 설정하지 않으면 TRUE를 반환합니다.
 }
@@ -193,3 +208,11 @@ HCURSOR CMFCApplication1Dlg::OnQueryDragIcon()
 	return static_cast<HCURSOR>(m_hIcon);
 }
 
+
+
+void CMFCApplication1Dlg::OnSize(UINT nType, int cx, int cy)
+{
+	CDialogEx::OnSize(nType, cx, cy);
+
+	// TODO: 여기에 메시지 처리기 코드를 추가합니다.
+}

@@ -19,7 +19,7 @@ class CAboutDlg : public CDialogEx
 {
 public:
 	CAboutDlg();
-
+	
 // 대화 상자 데이터입니다.
 #ifdef AFX_DESIGN_TIME
 	enum { IDD = IDD_ABOUTBOX };
@@ -135,23 +135,22 @@ BOOL CMFCApplication1Dlg::OnInitDialog()
 		item.lParam = dwSeed + i;
 		m_List.InsertItem(&item);
 
-		str.Format(_T("%d Button"), i + 1);
-		m_List.SetItemText(i, 1, str);
+		//str.Format(_T("%d Button"), i + 1);
+		//m_List.SetItemText(i, 1, str);
 	
-
-		Dim controlList As New List(Of MyControls)
-			Dim item1 As New MyControls
-			item1.theButton = New Button
-			item1.theTextBox = New TextBox
-			controlList.Add(item1)
-		//for (int i = 0; i < 10; i += 2)
-	//	{
-		//	for (int j = 2; j < 5; j += 2)
-		//	{
-		//		str.Format(_T("subitem\r\n%d,%d"), i, j);
-		//		this->m_List._SetItemControl(i, j, _CT_CButton, 0, strT);
-		//	}
-	//	}
+		
+		// 아이템 추가: ComboBox
+		
+		//m_List.InsertItem(1, _T("ComboBox"));
+		
+		CStringArray sa;
+		sa.Add(_T("사진"));
+		sa.Add(_T("여행"));
+		sa.Add(_T("연극"));
+		sa.Add(_T("영화"));
+		//m_List.SetComboBox(i, 1, TRUE, &sa);
+		m_List.SetItemText(i, 1, _T("사진"));
+		
 	}
 	
 	

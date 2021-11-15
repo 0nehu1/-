@@ -151,7 +151,3 @@ extern "C" AdvComboBox * CAdvListCtrl::ShowAdvComboBox(int nItem, int nCol, CStr
 	return nullptr;
 }
 
-AdvComboBox* ShowAdvComboBox(int nItem, int nCol, CStringList& lstItems, int nSel)
-{
-	return nullptr;
-}

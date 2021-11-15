@@ -150,13 +150,13 @@ BOOL CMFCApplication1Dlg::OnInitDialog()
 	for (int j = 0; j < 4; j++) {
 
 		
-		CStringList sa;
-		sa.AddTail(_T("사진"));
-		sa.AddTail(_T("여행"));
-		sa.AddTail(_T("연극"));
-		sa.AddTail(_T("영화"));
-		//m_List1.ShowAdvComboBox(1, j, &sa, 1);
-		m_List.SetItemText(j, 1, sa.GetTail());
+		CStringList* sa{};
+		sa->AddTail(_T("사진"));
+		sa->AddTail(_T("여행"));
+		sa->AddTail(_T("연극"));
+		sa->AddTail(_T("영화"));
+		m_List1.ShowAdvComboBox(1, j, sa, 1);
+		//m_List.SetItemText(j, 1, sa.GetTail());
 	}
 	
 

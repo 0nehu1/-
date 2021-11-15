@@ -155,8 +155,8 @@ BOOL CMFCApplication1Dlg::OnInitDialog()
 		sa.AddTail(_T("여행"));
 		sa.AddTail(_T("연극"));
 		sa.AddTail(_T("영화"));
-		m_List1.ShowAdvComboBox(j, 3, &sa, 1);
-		//m_List.SetItemText(i, 1, _T("사진"));
+		//m_List1.ShowAdvComboBox(1, j, &sa, 1);
+		m_List.SetItemText(j, 1, sa.GetTail());
 	}
 	
 

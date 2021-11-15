@@ -1,5 +1,6 @@
 #include "pch.h"
 #include "CAdvListCtrl.h"
+#include "resource.h"
 
 IMPLEMENT_DYNAMIC(CAdvListCtrl, CListCtrl)
 
@@ -142,9 +143,9 @@ extern "C" AdvComboBox * CAdvListCtrl::ShowAdvComboBox(int nItem, int nCol, CStr
 		CBS_DROPDOWNLIST | CBS_DISABLENOSCROLL;
 	//CComboBox* pList = new CAdvComboBox(nItem, nCol, &lstItems, nSel);
 	CComboBox* pList = new AdvComboBox( nItem, nCol,  lstItems,  nSel);
-	//pList->Create(dwStyle, rect, this, IDC_ADVCOMBO);
-	//pList->SetItemHeight(-1, nHeight);
-	//pList->SetHorizontalExtent(GetColumnWidth(nCol));
+	pList->Create(dwStyle, rect, this, IDC_LIST1);
+	pList->SetItemHeight(-1, nHeight);
+	pList->SetHorizontalExtent(GetColumnWidth(nCol));
 
 	
 	return nullptr;

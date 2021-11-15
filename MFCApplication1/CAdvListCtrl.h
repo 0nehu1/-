@@ -23,6 +23,6 @@ public:
 public:
 
     int m_nColumn;
-    AdvComboBox * ShowAdvComboBox(int nItem, int nCol, CStringList & lstItems, int nSel);
+    AdvComboBox * ShowAdvComboBox(int nItem, int nCol, CStringList* lstItems, int nSel);
 };
 

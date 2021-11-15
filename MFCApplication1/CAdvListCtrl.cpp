@@ -54,9 +54,9 @@ void CAdvListCtrl::OnLButtonDown(UINT nFlags, CPoint point)
 		{
 				if (!(GetWindowLong(m_hWnd, GWL_STYLE) & LVS_EDITLABELS))
 				{ 
-					CStringList lstItems;
-					lstItems.AddTail(L"Item 1");
-					lstItems.AddTail(L"Item 2");
+					CStringList* lstItems{};
+					lstItems->AddTail(L"Item 1");
+					lstItems->AddTail(L"Item 2");
 
 					CString strGet = this->GetItemText(nIndex, m_nColumn);
 					ShowAdvComboBox(nIndex, m_nColumn, lstItems, 0);
@@ -103,7 +103,7 @@ void CAdvListCtrl::SetColumnCombo(int nColumn)
 	m_nColumn = nColumn;
 }
 
-extern "C" AdvComboBox * CAdvListCtrl::ShowAdvComboBox(int nItem, int nCol, CStringList & lstItems, int nSel)
+extern "C" AdvComboBox * CAdvListCtrl::ShowAdvComboBox(int nItem, int nCol, CStringList* lstItems, int nSel)
 {
 	if (!EnsureVisible(nItem, TRUE)) return NULL;
 
@@ -141,7 +141,7 @@ extern "C" AdvComboBox * CAdvListCtrl::ShowAdvComboBox(int nItem, int nCol, CStr
 	DWORD dwStyle = WS_BORDER | WS_CHILD | WS_VISIBLE |
 		CBS_DROPDOWNLIST | CBS_DISABLENOSCROLL;
 	//CComboBox* pList = new CAdvComboBox(nItem, nCol, &lstItems, nSel);
-	CComboBox* pList = new AdvComboBox( nItem, nCol,  &lstItems,  nSel);
+	CComboBox* pList = new AdvComboBox( nItem, nCol,  lstItems,  nSel);
 	//pList->Create(dwStyle, rect, this, IDC_ADVCOMBO);
 	//pList->SetItemHeight(-1, nHeight);
 	//pList->SetHorizontalExtent(GetColumnWidth(nCol));

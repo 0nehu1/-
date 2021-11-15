@@ -143,16 +143,21 @@ BOOL CMFCApplication1Dlg::OnInitDialog()
 		
 		//m_List.InsertItem(1, _T("ComboBox"));
 		
+		
+		
+	}
+	
+	for (int j = 0; j < 4; j++) {
+
+		
 		CStringList sa;
 		sa.AddTail(_T("사진"));
 		sa.AddTail(_T("여행"));
 		sa.AddTail(_T("연극"));
 		sa.AddTail(_T("영화"));
-		//m_List1.ShowAdvComboBox(4, 4, sa,1);
-		m_List.SetItemText(i, 1, _T("사진"));
-		
+		m_List1.ShowAdvComboBox(j, 3, &sa, 1);
+		//m_List.SetItemText(i, 1, _T("사진"));
 	}
-	
 	
 
 	return TRUE;  // 포커스를 컨트롤에 설정하지 않으면 TRUE를 반환합니다.

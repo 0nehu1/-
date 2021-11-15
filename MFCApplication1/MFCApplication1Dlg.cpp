@@ -143,12 +143,12 @@ BOOL CMFCApplication1Dlg::OnInitDialog()
 		
 		//m_List.InsertItem(1, _T("ComboBox"));
 		
-		CStringArray sa;
-		sa.Add(_T("사진"));
-		sa.Add(_T("여행"));
-		sa.Add(_T("연극"));
-		sa.Add(_T("영화"));
-		//m_List.SetComboBox(i, 1, TRUE, &sa);
+		CStringList sa;
+		sa.AddTail(_T("사진"));
+		sa.AddTail(_T("여행"));
+		sa.AddTail(_T("연극"));
+		sa.AddTail(_T("영화"));
+		//m_List1.ShowAdvComboBox(4, 4, sa,1);
 		m_List.SetItemText(i, 1, _T("사진"));
 		
 	}

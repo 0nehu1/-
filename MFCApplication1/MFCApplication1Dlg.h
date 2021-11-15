@@ -3,6 +3,7 @@
 //
 
 #pragma once
+#include "CAdvListCtrl.h"
 
 
 // CMFCApplication1Dlg 대화 상자
@@ -33,5 +34,6 @@ protected:
 	DECLARE_MESSAGE_MAP()
 public:
 	CListCtrl m_List;
+	CAdvListCtrl m_List1;
 	afx_msg void OnSize(UINT nType, int cx, int cy);
 };

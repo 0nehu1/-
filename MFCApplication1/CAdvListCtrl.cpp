@@ -1,12 +1,17 @@
 #include "pch.h"
 #include "CAdvListCtrl.h"
+
+IMPLEMENT_DYNAMIC(CAdvListCtrl, CListCtrl)
+
 BEGIN_MESSAGE_MAP(CAdvListCtrl, CListCtrl)
 	ON_WM_HSCROLL()
 	ON_WM_VSCROLL()
 	ON_WM_LBUTTONDOWN()
 	ON_WM_LBUTTONUP()
 	ON_NOTIFY_REFLECT(LVN_ENDLABELEDIT, &CAdvListCtrl::OnLvnEndlabeledit)
+	
 END_MESSAGE_MAP()
+
 
 
 CAdvListCtrl::CAdvListCtrl()
@@ -14,17 +19,8 @@ CAdvListCtrl::CAdvListCtrl()
 	m_nColumn = -1;
 }
 
-CAdvListCtrl::~CAdvListCtrl()
-{
-}
 
-BEGIN_MESSAGE_MAP(CAdvListCtrl, CListCtrl)
-	ON_WM_HSCROLL()
-	ON_WM_VSCROLL()
-	ON_NOTIFY_REFLECT(LVN_ENDLABELEDIT, &CAdvListCtrl::OnLvnEndlabeledit)
-	ON_WM_LBUTTONDOWN()
-	ON_WM_LBUTTONUP()
-END_MESSAGE_MAP()
+
 
 
 void CAdvListCtrl::OnHScroll(UINT nSBCode, UINT nPos, CScrollBar* pScrollBar)
@@ -96,47 +92,10 @@ void CAdvListCtrl::OnLvnEndlabeledit(NMHDR* pNMHDR, LRESULT* pResult)
 	*pResult = 0;
 }
 
+
 int CAdvListCtrl::HitTestEx(CPoint& point, int* nCol) const
 {
-	int nColumn = 0;
-	int nRow = HitTest(point, NULL);
-
-	if (nCol) *nCol = 0;
-
-	//LVS_REPORT Check
-	if ((GetWindowLong(m_hWnd, GWL_STYLE) & LVS_TYPEMASK) != LVS_REPORT)
-		return nRow;
-
-	nRow = GetTopIndex();
-	int nBottom = nRow + GetCountPerPage();
-
-	if (nBottom > GetItemCount())
-		nBottom = GetItemCount();
-
-	CHeaderCtrl* pHeader = (CHeaderCtrl*)GetDlgItem(0);
-	int nColumnCount = pHeader->GetItemCount();
-
-	for (; nRow <= nBottom; ++nRow)
-	{
-		CRect rect;
-		GetItemRect(nRow, &rect, LVIR_BOUNDS);
-
-		if (rect.PtInRect(point))
-		{
-			for (nColumn = 0; nColumn < nColumnCount; ++nColumn)
-			{
-				int nColWidth = GetColumnWidth(nColumn);
-				if (point.x >= rect.left && point.x <= (rect.left + nColWidth))
-				{
-					if (nCol) *nCol = nColumn;
-					return nRow;
-				}
-				rect.left += nColWidth;
-			}
-		}
-	}
-
-	return -1;
+	return 0;
 }
 
 void CAdvListCtrl::SetColumnCombo(int nColumn)
@@ -144,7 +103,7 @@ void CAdvListCtrl::SetColumnCombo(int nColumn)
 	m_nColumn = nColumn;
 }
 
-CComboBox* CAdvListCtrl::ShowAdvComboBox(int nItem, int nCol, CStringList& lstItems, int nSel)
+extern "C" AdvComboBox * CAdvListCtrl::ShowAdvComboBox(int nItem, int nCol, CStringList & lstItems, int nSel)
 {
 	if (!EnsureVisible(nItem, TRUE)) return NULL;
 
@@ -181,11 +140,17 @@ CComboBox* CAdvListCtrl::ShowAdvComboBox(int nItem, int nCol, CStringList& lstIt
 
 	DWORD dwStyle = WS_BORDER | WS_CHILD | WS_VISIBLE |
 		CBS_DROPDOWNLIST | CBS_DISABLENOSCROLL;
-	CComboBox* pList = new CAdvComboBox(nItem, nCol, &lstItems, nSel);
-	pList->Create(dwStyle, rect, this, IDC_ADVCOMBO);
-	pList->SetItemHeight(-1, nHeight);
-	pList->SetHorizontalExtent(GetColumnWidth(nCol));
+	//CComboBox* pList = new CAdvComboBox(nItem, nCol, &lstItems, nSel);
+	CComboBox* pList = new AdvComboBox( nItem, nCol,  &lstItems,  nSel);
+	//pList->Create(dwStyle, rect, this, IDC_ADVCOMBO);
+	//pList->SetItemHeight(-1, nHeight);
+	//pList->SetHorizontalExtent(GetColumnWidth(nCol));
 
-	=
+	
+	return nullptr;
+}
+
+AdvComboBox* ShowAdvComboBox(int nItem, int nCol, CStringList& lstItems, int nSel)
+{
 	return nullptr;
 }

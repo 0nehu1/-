@@ -3,7 +3,7 @@
 
 IMPLEMENT_DYNAMIC(AdvComboBox, CComboBox)
 
-AdvComboBox::AdvComboBox(int nItem, int nSubItem, CStringList* plstItems, int nSel)
+AdvComboBox::AdvComboBox(int nItem, int nSubItem, CStringList * plstItems, int nSel)
 	: m_nItem(nItem)
 	, m_nSubItem(nSubItem)
 	, m_nSel(nSel)
@@ -12,9 +12,6 @@ AdvComboBox::AdvComboBox(int nItem, int nSubItem, CStringList* plstItems, int nS
 	m_lstItems.AddTail(plstItems);
 }
 
-AdvComboBox::~AdvComboBox()
-{
-}
 
 
 BEGIN_MESSAGE_MAP(AdvComboBox, CComboBox)
@@ -76,7 +73,7 @@ void AdvComboBox::OnKillFocus(CWnd* pNewWnd)
 	LV_DISPINFO dispinfo;
 	dispinfo.hdr.hwndFrom = GetParent()->m_hWnd;
 	dispinfo.hdr.idFrom = GetDlgCtrlID();
-	dispinfo.hdr.code = LVN_ENDLABELEDIT;
+	//dispinfo.hdr.code = LVN_ENDLABELEDIT;
 
 	dispinfo.item.mask = LVIF_TEXT;
 	dispinfo.item.iItem = m_nItem;

@@ -33,10 +33,10 @@
     <ClInclude Include="pch.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="CAdvListCtrl.h">
+    <ClInclude Include="AdvComboBox.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="AdvComboBox.h">
+    <ClInclude Include="CAdvListCtrl.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
   </ItemGroup>
@@ -50,10 +50,10 @@
     <ClCompile Include="pch.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="CAdvListCtrl.cpp">
+    <ClCompile Include="AdvComboBox.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
-    <ClCompile Include="AdvComboBox.cpp">
+    <ClCompile Include="CAdvListCtrl.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>

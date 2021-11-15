@@ -6,20 +6,13 @@ class AdvComboBox :
     DECLARE_DYNAMIC(AdvComboBox)
 
 public:
-    AdvComboBox(int nItem, int nSubItem, CStringList* plstItems, int nSel);
-    virtual ~AdvComboBox();
-
-
-
+    AdvComboBox(int nItem, int nSubItem, CStringList * plstItems, int nSel);
+    
     virtual BOOL PreTranslateMessage(MSG* pMsg);
-
-protected:
-    DECLARE_MESSAGE_MAP()
+ 
 
 public:
-    
 
-private:
     int         m_nItem;
     int         m_nSubItem;
     CStringList m_lstItems;

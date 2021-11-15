@@ -1,5 +1,7 @@
 #pragma once
 #include <afxcmn.h>
+#include "AdvComboBox.h"
+
 class CAdvListCtrl :
     public CListCtrl
 {
@@ -7,10 +9,7 @@ class CAdvListCtrl :
 
 public:
     CAdvListCtrl();
-    virtual ~CAdvListCtrl();
-
-    void AdvComboBox(int nItem, int nCol, CString& lstItems, int nSel);
-   
+    
 
     DECLARE_MESSAGE_MAP()
     afx_msg void OnHScroll(UINT nSBCode, UINT nPos, CScrollBar* pScrollBar);
@@ -21,11 +20,9 @@ public:
 
     int HitTestEx(CPoint& point, int* nCol) const;
     void SetColumnCombo(int nColumn);
-
-protected:
-    DECLARE_MESSAGE_MAP()
+public:
 
     int m_nColumn;
-    CComboBox* ShowAdvComboBox(int nItem, int nCol, CStringList& lstItems, int nSel);
+    AdvComboBox * ShowAdvComboBox(int nItem, int nCol, CStringList & lstItems, int nSel);
 };
 

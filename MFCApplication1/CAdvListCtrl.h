@@ -20,9 +20,10 @@ public:
 
     int HitTestEx(CPoint& point, int* nCol) const;
     void SetColumnCombo(int nColumn);
+   
 public:
-
+    CComboBox* ShowInPlaceList(int nItem, int nCol, CStringList& lstItems, int nSel);
     int m_nColumn;
-    AdvComboBox * ShowAdvComboBox(int nItem, int nCol, CStringList* lstItems, int nSel);
+   
 };
 

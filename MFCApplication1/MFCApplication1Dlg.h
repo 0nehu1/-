@@ -4,7 +4,7 @@
 
 #pragma once
 #include "CAdvListCtrl.h"
-
+#include "CInPlaceList.h"
 
 // CMFCApplication1Dlg 대화 상자
 class CMFCApplication1Dlg : public CDialogEx
@@ -34,6 +34,7 @@ protected:
 	DECLARE_MESSAGE_MAP()
 public:
 	CListCtrl m_List;
+	// 콤보박스 추가 리스트
 	CAdvListCtrl m_List1;
 	afx_msg void OnSize(UINT nType, int cx, int cy);
 };

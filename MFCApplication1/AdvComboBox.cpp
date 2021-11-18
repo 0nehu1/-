@@ -28,15 +28,17 @@ BOOL AdvComboBox::PreTranslateMessage(MSG* pMsg)
 {
 	if (pMsg->message == WM_KEYDOWN)
 	{
-		if (pMsg->wParam == VK_RETURN || pMsg->wParam == VK_ESCAPE)
+		// Enter Key
+		if (pMsg->wParam == VK_RETURN ||
+			pMsg->wParam == VK_ESCAPE ||
+			pMsg->wParam == VK_TAB)
 		{
-			::TranslateMessage(pMsg);
-			::DispatchMessage(pMsg);
-
-			return TRUE;
+			m_nVK = pMsg->wParam;
+			::PostMessage(m_hWnd, WM_CLOSE, 0, 0);
 		}
 	}
-    return CComboBox::PreTranslateMessage(pMsg);
+
+	return CComboBox::PreTranslateMessage(pMsg);
 }
 
 

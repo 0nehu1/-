@@ -6,8 +6,9 @@ class AdvComboBox :
     DECLARE_DYNAMIC(AdvComboBox)
 
 public:
-    AdvComboBox(int nItem, int nSubItem, CStringList * plstItems, int nSel);
-    
+int m_nVK;
+    AdvComboBox(int nItem, int nSubItem, CStringList* plstItems, int nSel);
+
     virtual BOOL PreTranslateMessage(MSG* pMsg);
  
 

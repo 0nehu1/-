@@ -31,6 +31,8 @@ public:
 // 구현입니다.
 protected:
 	DECLARE_MESSAGE_MAP()
+public:
+//	afx_msg int OnCreate(LPCREATESTRUCT lpCreateStruct);
 };
 
 CAboutDlg::CAboutDlg() : CDialogEx(IDD_ABOUTBOX)
@@ -43,6 +45,7 @@ void CAboutDlg::DoDataExchange(CDataExchange* pDX)
 }
 
 BEGIN_MESSAGE_MAP(CAboutDlg, CDialogEx)
+//	ON_WM_CREATE()
 END_MESSAGE_MAP()
 
 
@@ -123,6 +126,8 @@ BOOL CMFCApplication1Dlg::OnInitDialog()
 
 	m_List.ModifyStyle(LVS_TYPEMASK, LVS_REPORT);
 
+	m_List.SetExtendedStyle(LVS_EX_CHECKBOXES | LVS_EX_FULLROWSELECT); // 리스트 박스 추가옵션.
+
 	for(int i = 0; i < 6; i++)
 	{
 		ImgList.Add(AfxGetApp()->LoadIconW(IDI_ICON1+i));
@@ -143,22 +148,15 @@ BOOL CMFCApplication1Dlg::OnInitDialog()
 		
 		//m_List.InsertItem(1, _T("ComboBox"));
 		
-		
-		
-	}
-	
-	for (int j = 0; j < 4; j++) {
-
-		
 		CStringList sa;
 		sa.AddTail(_T("사진"));
 		sa.AddTail(_T("여행"));
 		sa.AddTail(_T("연극"));
 		sa.AddTail(_T("영화"));
-		//m_List1.ShowAdvComboBox(1, j, &sa, 0);
-		//m_List.SetItemText(j, 1, sa.GetTail());
+		m_List1.ShowInPlaceList(1, i, sa, 0);
+		//m_List.SetItemText(i, 1, sa.GetTail());
+		
 	}
-	
 
 	return TRUE;  // 포커스를 컨트롤에 설정하지 않으면 TRUE를 반환합니다.
 }
@@ -220,3 +218,4 @@ void CMFCApplication1Dlg::OnSize(UINT nType, int cx, int cy)
 
 	// TODO: 여기에 메시지 처리기 코드를 추가합니다.
 }
+
